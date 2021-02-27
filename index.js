@@ -8,6 +8,10 @@ app.use(express.static('./assets'));
 //use express ejs layout {used before routes because we have to tell the views in the routes that we have used layout}
 app.use(expressLayouts);
 
+//extract style and scripts from subpages into the layout
+app.set('layout extractStyles',true);
+app.set('layout extractScripts',true);
+
 // use express router
 app.use('/',require('./routes'));
 
