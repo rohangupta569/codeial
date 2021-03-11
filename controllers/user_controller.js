@@ -95,3 +95,10 @@ module.exports.createSession = function(req,res){
    });
 
 }
+
+//sign out the session 
+module.exports.signOut = function(req,res)
+{
+   res.cookie('user_id' , 0);
+   return res.redirect('back');
+}
