@@ -21,7 +21,7 @@ passport.use(new LocalStrategy({
                 return done(null , false);
             }
 
-            return done(null,true);
+            return done(null , user);
         });
     }
 ));
