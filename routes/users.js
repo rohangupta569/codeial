@@ -5,7 +5,7 @@ const passport = require('passport');
 const userController = require('../controllers/user_controller');
 
 
-router.get('/profile', passport.checkAuthentication ,userController.profile);
+router.get('/profile/:id', passport.checkAuthentication ,userController.profile);
 // router.get('/post',passport.checkAuthentication,userController.post); created posts route seprately 
 router.get('/sign_in',userController.signIn);
 router.get('/sign_up',userController.signUp);
