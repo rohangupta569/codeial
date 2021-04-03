@@ -15,6 +15,9 @@
                     $('#posts-list-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button', newPost));
 
+                     // call the create comment class
+                     new PostComments(data.data.post._id);
+
                     new Noty({
                         theme: 'relax',
                         text: "Post published!",
@@ -45,7 +48,7 @@
         </p>
         <div class="post-comments">
 
-                <form action="/comments/create" method ="POST">
+                <form id ="post-${post._id}-comments-form" action="/comments/create" method ="POST">
                     <input type="text" name="content" placeholder="Type here to add comment..." required>
                     <input type="hidden" name="post" value="${post._id}">
                     <input type="submit" value="Add Comment">
@@ -94,6 +97,10 @@
             let self = $(this);
             let deleteButton = $(' .delete-post-button', self);
             deletePost(deleteButton);
+
+            // get the post's id by splitting the id attribute
+            let postId = self.prop('id').split("-")[1]
+            new PostComments(postId);
 
         });
     }
